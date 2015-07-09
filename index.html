@@ -21,6 +21,7 @@
         <script src="scripts/formular.js"></script>
         <script src="scripts/fadeSlideShow.js"></script>
         <script src="scripts/emailValidation.js"></script>
+        <script src="scripts/editDelete.js"></script>
 
     </head>
     <body>
@@ -150,7 +151,7 @@
                                         <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
                                     </div>
                                 </div>
-                                <table class="table">
+                                <table class="table" id="mytable">
                                     <thead>
                                         <tr class="filters">
                                             <th><input type="text" class="form-control" placeholder="Name" disabled></th>
@@ -158,6 +159,8 @@
                                             <th><input type="text" class="form-control" placeholder="Zip" disabled></th>
                                             <th><input type="text" class="form-control" placeholder="Country" disabled></th>
                                             <th><input type="text" class="form-control" placeholder="Cuisine" disabled></th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -167,6 +170,8 @@
                                             <td>12345</td>
                                             <td>Germany</td>
                                             <td>Chinese</td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr>
                                         <tr>
                                             <td>Papa Pizza</td>
@@ -174,6 +179,8 @@
                                             <td>34645</td>
                                             <td>Netherlands</td>
                                             <td>Italian</td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr>
                                         <tr>
                                             <td>Zum Haxn</td>
@@ -181,6 +188,8 @@
                                             <td>13400</td>
                                             <td>Germany</td>
                                             <td>German</td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -368,6 +377,90 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <!--                //////////////////////-->
+                <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <input class="form-control " type="text" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+
+                                    <input class="form-control " type="text" placeholder="Adress">
+                                </div>
+                                <div class="form-group">
+
+                                    <input class="form-control " type="text" placeholder="Zip">
+                                </div>
+                                <div class="form-group">
+
+                                    <select class="form-control" id="sel1" name="land" size="1">
+                                        <option value="zero"></option>
+                                        <option value="at">Austria</option>
+                                        <option value="en">England</option>
+                                        <option value="fr">France</option>
+                                        <option value="de">Germany</option>
+                                        <option value="it">Italy</option>
+                                        <option value="ne">Netherlands</option>
+                                        <option value="es">Spain</option>
+                                        <option value="sw">Switzerland</option>
+                                    </select><br />    
+                                </div>
+                                <div class="form-group">
+
+                                    <select class="form-control" id="sel1" name="cuisine" size="1">
+                                        <option value="zero"></option>
+                                        <option value="ame">American</option>
+                                        <option value="chi">Chinese</option>
+                                        <option value="eng">English</option>
+                                        <option value="fra">French</option>
+                                        <option value="gre">Greek</option>
+                                        <option value="ind">Indian</option>
+                                        <option value="ita">Italian</option>
+                                        <option value="jap">Japanese</option>
+                                        <option value="mex">Mexican</option>
+                                        <option value="rus">Russian</option>
+                                        <option value="spa">Spanish</option>
+                                    </select><br />
+                                </div>
+                            </div>
+                            <div class="modal-footer ">
+                                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content --> 
+                    </div>
+                    <!-- /.modal-dialog --> 
+                </div>
+
+
+
+                <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
+
+                            </div>
+                            <div class="modal-footer ">
+                                <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content --> 
+                    </div>
+                    <!-- /.modal-dialog --> 
                 </div>
             </div>
 
